@@ -1,4 +1,4 @@
-package com.example.adclone;
+package com.example.adclone.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

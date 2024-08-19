@@ -5,4 +5,6 @@ module com.example.adclone {
 
     opens com.example.adclone to javafx.fxml;
     exports com.example.adclone;
+    exports com.example.adclone.Controller;
+    opens com.example.adclone.Controller to javafx.fxml;
 }
