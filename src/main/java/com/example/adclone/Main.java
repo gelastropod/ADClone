@@ -1,26 +1,35 @@
 package com.example.adclone;
 
 import com.example.adclone.Model.HelperFunctions;
+import com.example.adclone.Model.Screen;
+import com.example.adclone.Model.PopUp;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Main extends Application {
+    private Stage mainStage;
+    private Group escapeConfirmation;
+    private Label escapeConfirmationText;
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
+        mainStage = stage;
+
         Screen primaryScreen = Screen.getPrimary();
         Rectangle2D bounds = primaryScreen.getBounds();
         int w = (int)bounds.getWidth();
@@ -36,11 +45,15 @@ public class Main extends Application {
             }
         });
 
-        stage.setScene(scene);
-        stage.setTitle("Antimatter Dimensions Clone");
-        stage.setFullScreenExitHint("");
-        stage.setFullScreen(true);
-        stage.show();
+        scene.getStylesheets().add(this.getClass().getResource("View/PopUp.css").toExternalForm());
+
+        mainStage.setScene(scene);
+        mainStage.setTitle("Antimatter Dimensions Clone");
+        mainStage.setFullScreenExitHint("");
+        mainStage.setFullScreen(true);
+        mainStage.show();
+
+        editContent(w, h);
     }
 
     public void handleKeyPress(KeyEvent keyEvent)
@@ -48,29 +61,46 @@ public class Main extends Application {
         String code = keyEvent.getCode().toString();
         if (code.equals("ESCAPE"))
         {
-
+            escapeConfirmation.setVisible(true);
+            mainStage.setFullScreen(true);
         }
     }
 
     public Parent createContent(int w, int h)
     {
-        GridPane gridPane = new GridPane();
-        HelperFunctions.changeColour("background", 0, 0, 0, gridPane);
-
         Group mainArea = new Group();
 
-        Rectangle escapeConfirmation = new Rectangle();
-        escapeConfirmation.setArcWidth(w * 0.05);
-        escapeConfirmation.setArcHeight(w * 0.05);
-        escapeConfirmation.setWidth(w * 0.5);
-        escapeConfirmation.setHeight(h * 0.3);
-        escapeConfirmation.setX(w * 0.25);
-        escapeConfirmation.setY(h * 0.35);
+        Screen screen = new Screen(w / 2, h / 2, w, h);
+        mainArea.getChildren().add(screen);
+        HelperFunctions.changeColour("-fx-fill", 0, 0, 0, screen);
+        screen.setWidth(w);
+        screen.setHeight(h);
+
+        escapeConfirmation = new Group();
+        escapeConfirmation.setVisible(false);
         mainArea.getChildren().add(escapeConfirmation);
 
-        gridPane.add(mainArea, 1, 0);
+        Rectangle escapeConfirmationPopUp = new Rectangle();
+        escapeConfirmation.getChildren().add(escapeConfirmationPopUp);
+        escapeConfirmationPopUp.getStyleClass().add("pop-up");
+        escapeConfirmationPopUp.setArcWidth(w * 0.01);
+        escapeConfirmationPopUp.setArcHeight(w * 0.01);
+        escapeConfirmationPopUp.setWidth(w * 0.4);
+        escapeConfirmationPopUp.setHeight(h * 0.2);
+        escapeConfirmationPopUp.setX(w * 0.3);
+        escapeConfirmationPopUp.setY(h * 0.4);
 
-        return gridPane;
+        escapeConfirmationText = new Label("Do you really wish to exit?");
+        escapeConfirmation.getChildren().add(escapeConfirmationText);
+        HelperFunctions.changeColour("-fx-text-fill", 255, 255, 255, escapeConfirmationText);
+
+        return mainArea;
+    }
+
+    public void editContent(double w, double h)
+    {
+        HelperFunctions.setScale(w * 0.2, h * 0.08, escapeConfirmationText);
+        HelperFunctions.setCenter(w * 0.5, h * 0.45, escapeConfirmationText);
     }
 
     public static void main(String[] args) {
