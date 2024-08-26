@@ -90,8 +90,4 @@ public class Main extends Application {
     {
         escapeConfirmationPopUp.finalise();
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
 }
