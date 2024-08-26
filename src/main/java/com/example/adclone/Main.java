@@ -1,30 +1,24 @@
 package com.example.adclone;
 
 import com.example.adclone.Model.HelperFunctions;
-import com.example.adclone.Model.Screen;
 import com.example.adclone.Model.PopUp;
+import com.example.adclone.Model.Rect;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
     private Stage mainStage;
-    private Group escapeConfirmation;
-    private Label escapeConfirmationText;
+    private PopUp escapeConfirmationPopUp;
 
     @Override
     public void start(Stage stage) {
@@ -45,7 +39,8 @@ public class Main extends Application {
             }
         });
 
-        scene.getStylesheets().add(this.getClass().getResource("View/PopUp.css").toExternalForm());
+        scene.getStylesheets().add(this.getClass().getResource("View/Rect.css").toExternalForm());
+        scene.getStylesheets().add(this.getClass().getResource("View/FontStyle.css").toExternalForm());
 
         mainStage.setScene(scene);
         mainStage.setTitle("Antimatter Dimensions Clone");
@@ -61,7 +56,7 @@ public class Main extends Application {
         String code = keyEvent.getCode().toString();
         if (code.equals("ESCAPE"))
         {
-            escapeConfirmation.setVisible(true);
+            escapeConfirmationPopUp.setVisible(true);
             mainStage.setFullScreen(true);
         }
     }
@@ -70,37 +65,30 @@ public class Main extends Application {
     {
         Group mainArea = new Group();
 
-        Screen screen = new Screen(w / 2, h / 2, w, h);
-        mainArea.getChildren().add(screen);
-        HelperFunctions.changeColour("-fx-fill", 0, 0, 0, screen);
-        screen.setWidth(w);
-        screen.setHeight(h);
+        Rect rect = new Rect(w / 2, h / 2, w, h, 0.0);
+        mainArea.getChildren().add(rect);
+        HelperFunctions.changeColour("-fx-stroke", 0, 0, 0, rect);
+        rect.setWidth(w);
+        rect.setHeight(h);
 
-        escapeConfirmation = new Group();
-        escapeConfirmation.setVisible(false);
-        mainArea.getChildren().add(escapeConfirmation);
-
-        Rectangle escapeConfirmationPopUp = new Rectangle();
-        escapeConfirmation.getChildren().add(escapeConfirmationPopUp);
-        escapeConfirmationPopUp.getStyleClass().add("pop-up");
-        escapeConfirmationPopUp.setArcWidth(w * 0.01);
-        escapeConfirmationPopUp.setArcHeight(w * 0.01);
-        escapeConfirmationPopUp.setWidth(w * 0.4);
-        escapeConfirmationPopUp.setHeight(h * 0.2);
-        escapeConfirmationPopUp.setX(w * 0.3);
-        escapeConfirmationPopUp.setY(h * 0.4);
-
-        escapeConfirmationText = new Label("Do you really wish to exit?");
-        escapeConfirmation.getChildren().add(escapeConfirmationText);
-        HelperFunctions.changeColour("-fx-text-fill", 255, 255, 255, escapeConfirmationText);
+        escapeConfirmationPopUp = new PopUp(w * 0.5, h * 0.5, w * 0.4, h * 0.2, w * 0.01, "Do you really wish to exit?", "Exit", "Cancel");
+        mainArea.getChildren().add(escapeConfirmationPopUp);
+        escapeConfirmationPopUp.setVisible(false);
+        escapeConfirmationPopUp.setOnAction(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent mouseEvent)
+            {
+                mainStage.close();
+            }
+        });
 
         return mainArea;
     }
 
     public void editContent(double w, double h)
     {
-        HelperFunctions.setScale(w * 0.2, h * 0.08, escapeConfirmationText);
-        HelperFunctions.setCenter(w * 0.5, h * 0.45, escapeConfirmationText);
+        escapeConfirmationPopUp.finalise();
     }
 
     public static void main(String[] args) {

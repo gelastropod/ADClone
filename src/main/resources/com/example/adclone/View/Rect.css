@@ -1,0 +1,22 @@
+.rect {
+    -fx-fill: #000000;
+    -fx-stroke: #5ac467;
+    -fx-stroke-width: 4.0;
+}
+
+.cancel-button-rect {
+    -fx-stroke-width: 1.0;
+}
+
+.cancel-button-label {
+    
+}
+
+.confirm-button-rect {
+    -fx-stroke-width: 1.0;
+    -fx-fill: #5ac467;
+}
+
+.cancel-button-label {
+    
+}

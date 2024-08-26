@@ -1,0 +1,9 @@
+@font-face {
+    src: url("Fonts/MonospaceTypewriter.ttf");
+}
+
+.label {
+    -fx-font-family: "MonospaceTypewriter";
+    -fx-font-size: 50;
+    -fx-text-fill: #FFFFFF;
+}

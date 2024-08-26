@@ -1,7 +1,12 @@
 package com.example.adclone.Model;
 
+import javafx.animation.FillTransition;
 import javafx.scene.Node;
 import javafx.geometry.Bounds;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 
 public class HelperFunctions {
     public static int clamp(int lowerBound, int upperBound, int value)
@@ -15,7 +20,7 @@ public class HelperFunctions {
         int _r = clamp(0, 255, r);
         int _g = clamp(0, 255, g);
         int _b = clamp(0, 255, b);
-        node.setStyle(String.format("%s\n%s: #%02x%02x%02x", existingCSS, type, _r, _g, _b));
+        node.setStyle(String.format("%s\n%s: #%02x%02x%02x;", existingCSS, type, _r, _g, _b));
     }
 
     public static void setWidth(double width, Node node)
@@ -51,5 +56,15 @@ public class HelperFunctions {
         double nodeHeight = bounds.getHeight();
         node.setLayoutX(x - nodeWidth * 0.5);
         node.setLayoutY(y - nodeHeight * 0.5);
+    }
+
+    public static void fillTransition(Color colour1, Color colour2, double millis, Shape shape)
+    {
+        FillTransition fillTransition = new FillTransition();
+        fillTransition.setDuration(Duration.millis(millis));
+        fillTransition.setFromValue(colour1);
+        fillTransition.setToValue(colour2);
+        fillTransition.setShape(shape);
+        fillTransition.play();
     }
 }
