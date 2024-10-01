@@ -14,5 +14,6 @@ public class RichText
     public static RichText compile(String formatString)
     {
         RichText compiledText = new RichText();
+
     }
 }
