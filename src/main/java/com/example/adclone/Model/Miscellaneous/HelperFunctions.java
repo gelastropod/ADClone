@@ -1,4 +1,4 @@
-package com.example.adclone.Model;
+package com.example.adclone.Model.Miscellaneous;
 
 import javafx.animation.FillTransition;
 import javafx.scene.Node;
@@ -14,12 +14,12 @@ public class HelperFunctions {
         return Math.min(Math.max(lowerBound, value), upperBound);
     }
 
-    public static void changeColour(String type, int r, int g, int b, Node node)
+    public static void changeColour(String type, Color color, Node node)
     {
         String existingCSS = node.getStyle();
-        int _r = clamp(0, 255, r);
-        int _g = clamp(0, 255, g);
-        int _b = clamp(0, 255, b);
+        int _r = clamp(0, 255, (int) (color.getRed() * 256.0));
+        int _g = clamp(0, 255, (int) (color.getGreen() * 256.0));
+        int _b = clamp(0, 255, (int) (color.getBlue() * 256.0));
         node.setStyle(String.format("%s\n%s: #%02x%02x%02x;", existingCSS, type, _r, _g, _b));
     }
 
@@ -45,6 +45,12 @@ public class HelperFunctions {
         double scaleX = prefWidth / nodeWidth;
         double scaleY = prefHeight / nodeHeight;
         double scale = Math.min(scaleX, scaleY);
+        node.setScaleX(scale);
+        node.setScaleY(scale);
+    }
+
+    public static void setScale(double scale, Node node)
+    {
         node.setScaleX(scale);
         node.setScaleY(scale);
     }

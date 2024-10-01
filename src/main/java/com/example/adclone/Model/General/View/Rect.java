@@ -1,4 +1,4 @@
-package com.example.adclone.Model;
+package com.example.adclone.Model.General.View;
 
 import javafx.scene.shape.Rectangle;
 

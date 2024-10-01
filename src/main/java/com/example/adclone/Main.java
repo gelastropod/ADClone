@@ -1,18 +1,18 @@
 package com.example.adclone;
 
-import com.example.adclone.Model.HelperFunctions;
-import com.example.adclone.Model.PopUp;
-import com.example.adclone.Model.Rect;
+import com.example.adclone.Model.Miscellaneous.HelperFunctions;
+import com.example.adclone.Model.General.Control.PopUp;
+import com.example.adclone.Model.General.View.Rect;
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -32,12 +32,8 @@ public class Main extends Application {
         Parent parent = createContent(w, h);
         Scene scene = new Scene(parent, w, h);
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                handleKeyPress(keyEvent);
-            }
-        });
+        scene.setOnKeyPressed(this::handleKeyPress);
+        stage.setOnCloseRequest(this::handleExit);
 
         scene.getStylesheets().add(this.getClass().getResource("View/Rect.css").toExternalForm());
         scene.getStylesheets().add(this.getClass().getResource("View/FontStyle.css").toExternalForm());
@@ -61,27 +57,26 @@ public class Main extends Application {
         }
     }
 
+    public void handleExit(Event event)
+    {
+        escapeConfirmationPopUp.setVisible(true);
+        event.consume();
+    }
+
     public Parent createContent(int w, int h)
     {
         Group mainArea = new Group();
 
         Rect rect = new Rect(w / 2, h / 2, w, h, 0.0);
         mainArea.getChildren().add(rect);
-        HelperFunctions.changeColour("-fx-stroke", 0, 0, 0, rect);
+        HelperFunctions.changeColour("-fx-stroke", Color.BLACK, rect);
         rect.setWidth(w);
         rect.setHeight(h);
 
         escapeConfirmationPopUp = new PopUp(w * 0.5, h * 0.5, w * 0.4, h * 0.2, w * 0.01, "Do you really wish to exit?", "Exit", "Cancel");
         mainArea.getChildren().add(escapeConfirmationPopUp);
         escapeConfirmationPopUp.setVisible(false);
-        escapeConfirmationPopUp.setOnAction(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent mouseEvent)
-            {
-                mainStage.close();
-            }
-        });
+        escapeConfirmationPopUp.setOnAction(mouseEvent -> mainStage.close());
 
         return mainArea;
     }
@@ -89,5 +84,9 @@ public class Main extends Application {
     public void editContent(double w, double h)
     {
         escapeConfirmationPopUp.finalise();
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 }

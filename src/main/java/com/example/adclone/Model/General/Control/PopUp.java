@@ -1,5 +1,7 @@
-package com.example.adclone.Model;
+package com.example.adclone.Model.General.Control;
 
+import com.example.adclone.Model.Miscellaneous.HelperFunctions;
+import com.example.adclone.Model.General.View.Rect;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Label;

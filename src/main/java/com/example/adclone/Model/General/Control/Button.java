@@ -1,6 +1,8 @@
-package com.example.adclone.Model;
+package com.example.adclone.Model.General.Control;
 
-import com.example.adclone.Main;
+import com.example.adclone.Model.Miscellaneous.DefaultColours;
+import com.example.adclone.Model.Miscellaneous.HelperFunctions;
+import com.example.adclone.Model.General.View.Rect;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -41,9 +43,9 @@ public class Button extends Group {
             public void handle(MouseEvent mouseEvent)
             {
                 if (confirm)
-                    HelperFunctions.fillTransition(Color.rgb(18, 122, 32), Color.rgb(90, 196, 103), 200.0, buttonRect);
+                    HelperFunctions.fillTransition(DefaultColours.darkenedMainColour, DefaultColours.mainColour, 200.0, buttonRect);
                 else
-                    HelperFunctions.fillTransition(Color.rgb(90, 196, 103), Color.rgb(0, 0, 0), 200.0, buttonRect);
+                    HelperFunctions.fillTransition(DefaultColours.mainColour, Color.BLACK, 200.0, buttonRect);
                 HelperFunctions.fillTransition(Color.rgb(0, 0, 0), Color.rgb(255, 255, 255), 200.0, Button.this.buttonText);
 
                 hover = false;
@@ -51,7 +53,7 @@ public class Button extends Group {
         });
 
         this.buttonText = new Text(buttonText);
-        HelperFunctions.changeColour("-fx-fill", 255, 255, 255, this.buttonText);
+        HelperFunctions.changeColour("-fx-fill", Color.WHITE, this.buttonText);
 
         buttonLabel = new Label();
         getChildren().add(buttonLabel);

@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ADClone:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="884d3a91-7298-4950-9f4c-f433f811a7dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/adclone/View/FontStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/adclone/View/Fonts/MonospaceTypewriter.ttf" afterDir="false" />
+    <list default="true" id="884d3a91-7298-4950-9f4c-f433f811a7dc" name="Changes" comment="prepare for jar build">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ADClone_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/General/View/FormattedText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/General/View/TextRect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/DefaultColours.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/JSON/JSON.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/JSON/JSONValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/JSON/RegexMatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/RichText/RichText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/RichText/RichTextToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/HelperFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/HelperFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/PopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/PopUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Rect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/adclone/View/PopUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/adclone/View/Rect.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/General/Control/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/HelperFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Miscellaneous/HelperFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/PopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/General/Control/PopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/Rect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adclone/Model/General/View/Rect.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,23 +61,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Jayden/Desktop/ADClone",
-    "settings.editor.selected.configurable": "preferences.updates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jayden/Desktop/ADClone&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jayden\Desktop\ADClone\src\main\resources\com\example\adclone\View\Fonts" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.adclone.Launcher" />
+      <module name="ADClone" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,9 +100,29 @@
       <option name="presentableId" value="Default" />
       <updated>1723974960004</updated>
     </task>
+    <task id="LOCAL-00001" summary="Finished the exit warning popup!">
+      <option name="closed" value="true" />
+      <created>1724675218417</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724675218417</updated>
+    </task>
+    <task id="LOCAL-00002" summary="prepare for jar build">
+      <option name="closed" value="true" />
+      <created>1724675295831</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724675295831</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Finished the exit warning popup!" />
+    <MESSAGE value="prepare for jar build" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepare for jar build" />
   </component>
 </project>
